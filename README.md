@@ -25,7 +25,7 @@ This is a code repository that encapsulates some common tools for GitHub Actions
 ```
 .
 ├── README.md
-├── notify-feishu                       # Feishu Group Notification Tool for sending Feishu messages
+├── notify-feishu-message               # Feishu Group Notification Tool for sending Feishu messages
 ├── notify-feishu-topic                 # Feishu Group Notification Tool for sending Feishu topics
 ├── k8s-ns-setup                        # Set Up K8s Namespace
 └── auto-pr-merge                       # Auto Create PR & Merge
