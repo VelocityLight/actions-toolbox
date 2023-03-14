@@ -5,7 +5,7 @@
 # inputs
 | name | required | description |
 |-----|---------|------------|
-| GIT_ACTION_BOT | true | your git token
+| GIT_TOKEN | true | your git token
 | authur | true | pr authur
 | assignees | true| pr reviews assignee 
 | title | true | pr title
@@ -16,4 +16,4 @@
 | name | description | example value |
 |-----|---------|------------|
 | pull-request-number | pull request ID | 1
-| pull-request-url | pull request url | https://github.com/VelocityLight/github-action-toolbox/pulls/1
+| pull-request-url | pull request url | https://github.com/VelocityLight/github-actions-toolbox/pulls/1

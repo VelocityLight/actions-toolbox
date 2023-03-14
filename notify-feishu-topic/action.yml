@@ -17,7 +17,7 @@ runs:
   using: "composite"
   steps:
     - name: "Notify using Feishu"
-      working-directory: github-action-toolbox/notify-feishu-topic
+      working-directory: github-actions-toolbox/notify-feishu-topic
       run: |
         bash notify_feishu_topic.sh "${{ inputs.feishu_webhook_url }}" "${{ inputs.title }}" "${{ inputs.content }}"
       shell: bash

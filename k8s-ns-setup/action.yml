@@ -1,0 +1,34 @@
+name: "Setup K8s Namespace"
+description: "Setup K8s Namespace"
+author: VelocityLight
+
+inputs:
+  namespace-arg:
+    required: true
+    description: "The argument to compose the target namespace name."
+
+outputs:
+  namespace:
+    description: "The namespace name that has deployed"
+    value: ${{ steps.string.outputs.lowercase }}
+
+runs:
+  using: "composite"
+  steps:
+    - uses: ASzc/change-string-case-action@v2
+      id: string
+      with:
+        string: ${{ inputs.namespace-arg }}
+
+    - name: Render YAML
+      uses: nowactions/envsubst@v1
+      with:
+        input: github-actions-toolbox/k8s-ns-setup/k8s-ns-template.yaml
+        output: github-actions-toolbox/k8s-ns-setup/k8s-ns.yaml
+      env:
+        TARGET_NAMESPACE: ${{ steps.string.outputs.lowercase }}
+
+    - name: Deploy Namespace
+      run: |
+        kubectl apply -f github-actions-toolbox/k8s-ns-setup/k8s-ns.yaml
+      shell: bash

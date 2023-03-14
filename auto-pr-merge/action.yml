@@ -3,7 +3,7 @@ description: "Auto PR & Merge"
 author: VelocityLight
 
 inputs:
-  GIT_ACTION_BOT:
+  GIT_TOKEN:
     required: true
     description: "git token [environment variable]"
   authur:
@@ -36,7 +36,7 @@ runs:
       uses: peter-evans/create-pull-request@v3
       id: cpr
       with:
-        token: ${{ inputs.GIT_ACTION_BOT }}
+        token: ${{ inputs.GIT_TOKEN }}
         # committer: GitHub <xxx@github.com>
         author: ${{ inputs.author }}
         signoff: false
@@ -53,6 +53,6 @@ runs:
       if: ${{ inputs.auto_pr_merge }} && steps.cpr.outputs.pull-request-operation == 'created'
       uses: peter-evans/enable-pull-request-automerge@v1
       with:
-        token: ${{ inputs.GIT_ACTION_BOT }}
+        token: ${{ inputs.GIT_TOKEN }}
         pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
         merge-method: squash
