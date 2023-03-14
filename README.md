@@ -1,3 +1,5 @@
+[English](README.md) | [中文](README_zh.md)
+
 # github-action-toolbox
 This is a code repository that encapsulates some common tools for GitHub Actions, and everyone is welcome to use it directly.
 
