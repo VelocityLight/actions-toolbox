@@ -1,0 +1,58 @@
+name: "Auto PR & Merge"
+description: "Auto PR & Merge"
+author: VelocityLight
+
+inputs:
+  GIT_ACTION_BOT:
+    required: true
+    description: "git token [environment variable]"
+  authur:
+    required: true
+  assignees:
+    required: true
+  title:
+    required: true
+  body:
+    required: false
+    default: ""
+  auto_pr_merge:
+    required: false
+    description: "auto pr merge or not"
+    type: boolean
+    default: false
+
+outputs:
+  pull-request-number:
+    description: "PullRequest Number"
+    value: ${{ steps.cpr.outputs.pull-request-number }}
+  pull-request-url:
+    description: "PullRequest Url"
+    value: ${{ steps.cpr.outputs.pull-request-url }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: create pull request
+      uses: peter-evans/create-pull-request@v3
+      id: cpr
+      with:
+        token: ${{ inputs.GIT_ACTION_BOT }}
+        # committer: GitHub <xxx@github.com>
+        author: ${{ inputs.author }}
+        signoff: false
+        branch-suffix: timestamp
+        delete-branch: true
+        assignees: ${{ inputs.assignees }}
+        title: ${{ inputs.title }}
+        body: |
+          Auto PR:
+          - ${{ inputs.body }}
+        commit-message: '[create-pull-request] automated change'
+
+    - name: automerge
+      if: ${{ inputs.auto_pr_merge }} && steps.cpr.outputs.pull-request-operation == 'created'
+      uses: peter-evans/enable-pull-request-automerge@v1
+      with:
+        token: ${{ inputs.GIT_ACTION_BOT }}
+        pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+        merge-method: squash

@@ -1,0 +1,30 @@
+name: "Feishu Notification - Message"
+description: "Send Feish Message"
+author: VelocityLight
+
+inputs:
+  title:
+    required: true
+    description: "The title to send"
+  content:
+    required: true
+    description: "The content to send"
+  feishu_webhook_url:
+    required: true
+    description: "Feishu Group Bot Webhook Url"
+
+runs:
+  using: "composite"
+  steps:
+    - name: "Notify using Feishu"
+      id: "notify"
+      env:
+        INPUT_WEBHOOK: ${{ inputs.feishu_webhook_url }}
+        INPUT_MESSAGE_TYPE: "post"
+        INPUT_TITLE: ${{ inputs.title }}
+        INPUT_CONTENT: ${{ inputs.content}}
+      run: |
+        wget -q https://github.com/xiachufang/actions-feishu/releases/download/v1.3.1/linux-amd64-actions-feishu.tar.gz
+        tar zxf linux-amd64-actions-feishu.tar.gz feishu
+        ./feishu
+      shell: bash
