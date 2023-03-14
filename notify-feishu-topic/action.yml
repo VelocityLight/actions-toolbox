@@ -1,0 +1,23 @@
+name: "Feishu Notification - Topic"
+description: "Send Feish Topic"
+author: VelocityLight
+
+inputs:
+  title:
+    required: true
+    description: "The title to send"
+  content:
+    required: true
+    description: "The content to send"
+  feishu_webhook_url:
+    required: true
+    description: "Feishu Topic Group Bot Webhook Url"
+
+runs:
+  using: "composite"
+  steps:
+    - name: "Notify using Feishu"
+      working-directory: github-action-toolbox/notify-feishu-topic
+      run: |
+        bash notify_feishu_topic.sh "${{ inputs.feishu_webhook_url }}" "${{ inputs.title }}" "${{ inputs.content }}"
+      shell: bash
