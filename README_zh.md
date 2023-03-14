@@ -25,7 +25,7 @@
 ```
 .
 ├── README.md
-├── notify-feishu-message              # 飞书群消息通知
+├── notify-feishu-message               # 飞书群消息通知
 ├── notify-feishu-topic                 # 飞书话题通知
 ├── k8s-ns-setup                        # k8s namespace 通过 github actions 创建
 └── auto-pr-merge                       # 自动创建PR & 合并
