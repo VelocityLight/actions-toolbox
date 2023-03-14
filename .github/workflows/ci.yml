@@ -16,5 +16,5 @@ jobs:
       - name: validate YML file
         uses: ibiqlik/action-yamllint@v3
         with:
-          file_or_dir: /**/action.yml
+          file_or_dir: ./**/action.yml
           config_data: "{extends: default, rules: {line-length: disable}}"

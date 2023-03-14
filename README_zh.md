@@ -18,7 +18,8 @@
 - name: Use tool
   uses: ./github-action-toolbox/${tool_path}
   with:
-    ${parameter_key}: ${parameter_value}
+    ${parameter_key_1}: ${parameter_value_1}
+    ${parameter_key_n}: ${parameter_value_n}
 ```
 
 ## 工具结构
