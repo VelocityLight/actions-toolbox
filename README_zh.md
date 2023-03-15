@@ -21,6 +21,7 @@
     ${parameter_key_1}: ${parameter_value_1}
     ${parameter_key_n}: ${parameter_value_n}
 ```
+你可以参考这个工程的示例: .github/workflows/user-usage.yml
 
 ## 工具列表
 ```

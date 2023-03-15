@@ -14,13 +14,14 @@ Like Feishu notification、K8s operation、cloud CI/CD components etc...
     ref: main
     path: github-actions-toolbox
 
-## Use tool that you need, ${tool_path} like 'notify-feishu-topic' is bellow File Structure
+## Use tool that you need
 - name: Use tool
   uses: ./github-actions-toolbox/${tool_path}
   with:
     ${parameter_key_1}: ${parameter_value_1}
     ${parameter_key_n}: ${parameter_value_n}
 ```
+You could see example in this project: .github/workflows/user-usage.yml
 
 ## Tools
 ```
