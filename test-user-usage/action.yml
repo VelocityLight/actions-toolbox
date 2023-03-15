@@ -1,10 +1,10 @@
-name: "Test Example"
+name: "Test User Usage"
 description: "Show how to use this toolbox"
 author: VelocityLight
 
 inputs:
   name:
-    required: true
+    required: false
     description: "Your name"
 
 runs:

@@ -4,7 +4,7 @@ Show how to use this project.
 # inputs
 | name | required | description |
 |-----|---------|------------|
-| name | true | Your name
+| name | false | Your name
 
 # outputs
 None.

@@ -24,6 +24,8 @@ jobs:
       - name: Show file
         run: |
           ls -la
+          cd github-actions-toolbox
+          ls -la
 
       ## Use tool that you need
       - name: Use tool
