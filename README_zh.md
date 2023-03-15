@@ -1,7 +1,8 @@
 [English](README.md) | [中文](README_zh.md)
 
 # github-actions-toolbox
-这是一个封装了一些github actions通用工具的代码仓库，欢迎大家直接使用
+这是一个封装了一些 github actions 通用工具的代码仓库，欢迎大家直接使用.
+包括: 飞书通知、K8s 操作、云上 CI/CD 组件等.
 
 ## 如何使用
 ```
@@ -21,12 +22,13 @@
     ${parameter_key_n}: ${parameter_value_n}
 ```
 
-## 工具结构
+## 工具列表
 ```
 .
 ├── README.md
 ├── notify-feishu-message               # 飞书群消息通知
 ├── notify-feishu-topic                 # 飞书话题通知
 ├── k8s-ns-setup                        # k8s namespace 通过 github actions 创建
+├── auto-build-push                     # CI/CD 自动化构建镜像和推送远程镜像仓库
 └── auto-pr-merge                       # 自动创建PR & 合并
 ```

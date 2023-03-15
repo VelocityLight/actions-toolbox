@@ -1,9 +1,10 @@
 [English](README.md) | [中文](README_zh.md)
 
 # github-actions-toolbox
-This is a code repository that encapsulates some common tools for GitHub Actions, and everyone is welcome to use it directly.
+This is a code repository that contains some common tools for GitHub Actions, and everyone is welcome to use it directly.
+Like Feishu notification、K8s operation、cloud CI/CD components etc...
 
-## Quick Start
+## How to use
 ```
 ## Download github-actions-toolbox first
 - name: Checkout github-actions-toolbox
@@ -21,12 +22,13 @@ This is a code repository that encapsulates some common tools for GitHub Actions
     ${parameter_key_n}: ${parameter_value_n}
 ```
 
-## File Structure
+## Tools
 ```
 .
 ├── README.md
-├── notify-feishu-message               # Feishu Group Notification Tool for sending Feishu messages
-├── notify-feishu-topic                 # Feishu Group Notification Tool for sending Feishu topics
-├── k8s-ns-setup                        # Set Up K8s Namespace
-└── auto-pr-merge                       # Auto Create PR & Merge
+├── notify-feishu-message               # Feishu group notification tool for sending Feishu messages
+├── notify-feishu-topic                 # Feishu group notification tool for sending Feishu topics
+├── k8s-ns-setup                        # Set up K8s namespace
+├── auto-build-push                     # CI/CD auto build docker image and push to remote registry
+└── auto-pr-merge                       # Auto create Github Pull Request and merge
 ```
