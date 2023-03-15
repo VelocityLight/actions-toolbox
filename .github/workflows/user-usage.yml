@@ -21,6 +21,10 @@ jobs:
           ref: main
           path: github-actions-toolbox
 
+      - name: Show file
+        run: |
+          ls -la
+
       ## Use tool that you need
       - name: Use tool
         uses: ./github-actions-toolbox/test-user-usage
