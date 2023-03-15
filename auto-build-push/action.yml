@@ -1,0 +1,67 @@
+name: "Auto Build & Push"
+description: "Build Docker Image & Push To Remote"
+author: VelocityLight
+
+inputs:
+  build_dir:
+    required: true
+    description: "build directory"
+  build_arch:
+    required: true
+    description: "build architectures, if many split by ',' please"
+
+  build_file:
+    required: false
+    description: "build file"
+  is_push:
+    required: false
+    description: "docker push or not"
+    type: boolean
+    default: false
+  tags:
+    required: false
+    description: "tag before push, if many please split by ',' please"
+
+  GIT_TOKEN:
+    required: false
+    description: "git token [environment variable]"
+
+runs:
+  using: "composite"
+  steps:
+    - name: set up Docker-Context
+      run: |
+        docker --context tls-env info || docker context create tls-env
+      shell: bash
+
+    - name: set up Docker-Buildx
+      uses: docker/setup-buildx-action@v2
+      with:
+        endpoint: tls-env
+
+    - name: build and push latest images
+      if: ${{ inputs.build_file == '' }}
+      uses: docker/build-push-action@v2
+      with:
+        context: ${{ inputs.build_dir }}
+        platforms: ${{ inputs.build_arch }}
+        push: ${{ inputs.is_push }}
+        tags: ${{ inputs.tags }}
+        build-args: |
+          GITHUB_TOKEN=${{ inputs.GIT_TOKEN }}
+        secrets: |
+          github_token=${{ inputs.GIT_TOKEN }}
+
+    - name: build and push latest images
+      if: ${{ inputs.build_file != '' }}
+      uses: docker/build-push-action@v2
+      with:
+        context: ${{ inputs.build_dir }}
+        file: ${{ inputs.build_file }}
+        platforms: ${{ inputs.build_arch }}
+        push: ${{ inputs.is_push }}
+        tags: ${{ inputs.tags }}
+        build-args: |
+          GITHUB_TOKEN=${{ inputs.GIT_TOKEN }}
+        secrets: |
+          github_token=${{ inputs.GIT_TOKEN }}
