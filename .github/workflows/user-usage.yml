@@ -21,6 +21,6 @@ jobs:
 
       ## Use tool that you need
       - name: Use tool
-        uses: ./github-actions-toolbox/test-user-usage
+        uses: ./test-user-usage
         with:
           name: ${{ github.event.pull_request.user.login }}
