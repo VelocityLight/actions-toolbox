@@ -1,0 +1,16 @@
+name: "Test User Usage"
+description: "Show how to use this toolbox"
+author: VelocityLight
+
+inputs:
+  name:
+    required: false
+    description: "Your name"
+
+runs:
+  using: "composite"
+  steps:
+    - name: "Hello"
+      run: |
+        echo "Hello: ${{ inputs.name }}"
+      shell: bash
