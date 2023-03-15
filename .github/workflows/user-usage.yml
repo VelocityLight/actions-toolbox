@@ -11,6 +11,8 @@ jobs:
     name: example
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+
       ## Download github-actions-toolbox first
       - name: Checkout github-actions-toolbox
         uses: actions/checkout@v3
@@ -21,6 +23,6 @@ jobs:
 
       ## Use tool that you need
       - name: Use tool
-        uses: ./test-user-usage
+        uses: ./github-actions-toolbox/test-user-usage
         with:
           name: ${{ github.event.pull_request.user.login }}
