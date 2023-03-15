@@ -12,5 +12,5 @@ runs:
   steps:
     - name: "Hello"
       run: |
-        echo "Hello: ${{ inputs.name }}" 
+        echo "Hello: ${{ inputs.name }}"
       shell: bash
