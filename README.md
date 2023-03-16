@@ -30,6 +30,7 @@ You could see example in this project: .github/workflows/user-usage.yml
 ├── notify-feishu-message               # Feishu group notification tool for sending Feishu messages
 ├── notify-feishu-topic                 # Feishu group notification tool for sending Feishu topics
 ├── k8s-ns-setup                        # Set up K8s namespace
-├── auto-build-push                     # CI/CD auto build docker image and push to remote registry
-└── auto-pr-merge                       # Auto create Github Pull Request and merge
+├── cicd-build-push                     # CI/CD auto build docker image and push to remote registry
+├── cicd-deploy-with-pulumi             # CI/CD auto deploy with pulumi
+└── cicd-pr-merge                       # CI/CD auto create Github Pull Request and merge
 ```

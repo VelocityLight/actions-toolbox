@@ -30,6 +30,7 @@
 ├── notify-feishu-message               # 飞书群消息通知
 ├── notify-feishu-topic                 # 飞书话题通知
 ├── k8s-ns-setup                        # k8s namespace 通过 github actions 创建
-├── auto-build-push                     # CI/CD 自动化构建镜像和推送远程镜像仓库
-└── auto-pr-merge                       # 自动创建PR & 合并
+├── cicd-build-push                     # CI/CD 自动化构建镜像和推送远程镜像仓库
+├── cicd-deploy-with-pulumi             # CI/CD 自动部署(采用 Pulumi IaC)
+└── cicd-pr-merge                       # CI/CD 自动创建PR & 合并
 ```
