@@ -1,4 +1,4 @@
-# auto-build-push
+# cicd-build-push
 Build Docker Image & Push To Remote.
 
 # inputs

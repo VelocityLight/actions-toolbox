@@ -1,4 +1,4 @@
-# auto-pr-merge
+# cicd-pr-merge
 1. Automatically create a pull request based on the input parameters.
 2. (Optional) Automatically merge the pull request above.
 

@@ -1,0 +1,95 @@
+name: "Deploy-Pulumi"
+description: "Deploy with Pulumi "
+author: VelocityLight
+
+inputs:
+  PULUMI_ACCESS_TOKEN:
+    required: true
+    description: "pulumi token [environment variable]"
+  PULUMI_CONFIG_PASSPHRASE:
+    required: true
+    description: "pulumi passphrase [environment variable]"
+
+  pulumi_dir:
+    required: true
+    description: "pulumi deploy stack under directory"
+  pulumi_stack:
+    required: true
+    description: "pulumi deploy stack"
+  pulumi-update-key-value:
+    required: false
+    description: "update value with key in the stack"
+
+outputs:
+  domain:
+    description: "The domain to pulumi up"
+    value: ${{ steps.pulumi-up.outputs.domain }}
+
+runs:
+  using: "composite"
+
+  steps:
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 16
+
+    - name: install Pulumi-Cli
+      uses: pulumi/setup-pulumi@v2
+
+    - name: select stack or create
+      working-directory: ${{ inputs.pulumi_dir }}
+      run: |
+        npm install
+        pulumi stack ls
+        pulumi stack select ${{ inputs.pulumi_stack }} --create
+      shell: bash
+      env:
+        PULUMI_ACCESS_TOKEN: ${{ inputs.PULUMI_ACCESS_TOKEN }}
+        PULUMI_CONFIG_PASSPHRASE: ${{ inputs.PULUMI_CONFIG_PASSPHRASE }}
+
+    - name: update key-value
+      if: "${{ inputs.pulumi-update-key-value != '' }}"
+      working-directory: ${{ inputs.pulumi_dir }}
+      run: |
+        PULUMI_DIR=$PWD
+        echo '${{ inputs.pulumi-update-key-value}}' | jq -c -r '.[]' | while read json; do
+          key=$(jq -r '.key' <<< "$json")
+          value=$(jq -r '.value' <<< "$json")
+          secret=$(jq -r '.secret' <<< "$json")
+          echo "key: $key"
+          echo "value: $value"
+          echo "secret: $secret"
+          if [ "$secret" = "1" ]
+          then
+            pulumi -C ${PULUMI_DIR} config set ${key} ${value} --secret
+          else
+            pulumi -C ${PULUMI_DIR} config set ${key} ${value}
+          fi
+        done
+      shell: bash
+      env:
+        PULUMI_ACCESS_TOKEN: ${{ inputs.PULUMI_ACCESS_TOKEN }}
+        PULUMI_CONFIG_PASSPHRASE: ${{ inputs.PULUMI_CONFIG_PASSPHRASE }}
+
+    - name: Pulumi Preview
+      uses: pulumi/actions@v3
+      with:
+        stack-name: ${{ inputs.pulumi_stack }}
+        command: preview
+        refresh: true
+        work-dir: ${{ inputs.pulumi_dir }}
+      env:
+        PULUMI_ACCESS_TOKEN: ${{ inputs.PULUMI_ACCESS_TOKEN }}
+        PULUMI_CONFIG_PASSPHRASE: ${{ inputs.PULUMI_CONFIG_PASSPHRASE }}
+
+    - name: Pulumi Up
+      uses: pulumi/actions@v3
+      id: pulumi-up
+      with:
+        stack-name: ${{ inputs.pulumi_stack }}
+        command: up
+        refresh: true
+        work-dir: ${{ inputs.pulumi_dir }}
+      env:
+        PULUMI_ACCESS_TOKEN: ${{ inputs.PULUMI_ACCESS_TOKEN }}
+        PULUMI_CONFIG_PASSPHRASE: ${{ inputs.PULUMI_CONFIG_PASSPHRASE }}

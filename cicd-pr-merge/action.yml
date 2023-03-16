@@ -1,5 +1,5 @@
-name: "Auto PR & Merge"
-description: "Auto PR & Merge"
+name: "PR & Merge"
+description: "PR & Merge"
 author: VelocityLight
 
 inputs:
