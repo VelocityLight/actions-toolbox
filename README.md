@@ -21,7 +21,7 @@ Like Feishu notification、K8s operation、cloud CI/CD components etc...
     ${parameter_key_1}: ${parameter_value_1}
     ${parameter_key_n}: ${parameter_value_n}
 ```
-You could see example in this project: .github/workflows/user-usage.yml
+You could see example in this project: [.github/workflows/user-usage.yml](https://github.com/VelocityLight/github-actions-toolbox/blob/main/.github/workflows/user-usage.yml)
 
 ## Tools
 ```
