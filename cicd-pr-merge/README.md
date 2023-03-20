@@ -16,4 +16,4 @@
 | name | description | example value |
 |-----|---------|------------|
 | pull-request-number | pull request ID | 1
-| pull-request-url | pull request url | https://github.com/VelocityLight/github-actions-toolbox/pulls/1
+| pull-request-url | pull request url | https://github.com/VelocityLight/actions-toolbox/pulls/1

@@ -23,12 +23,13 @@ runs:
     - name: Render YAML
       uses: nowactions/envsubst@v1
       with:
-        input: github-actions-toolbox/k8s-ns-setup/k8s-ns-template.yaml
-        output: github-actions-toolbox/k8s-ns-setup/k8s-ns.yaml
+        input: actions-toolbox/k8s-ns-setup/k8s-ns-template.yaml
+        output: actions-toolbox/k8s-ns-setup/k8s-ns.yaml
       env:
         TARGET_NAMESPACE: ${{ steps.string.outputs.lowercase }}
 
     - name: Deploy Namespace
+      working-directory: actions-toolbox/k8s-ns-setup
       run: |
-        kubectl apply -f github-actions-toolbox/k8s-ns-setup/k8s-ns.yaml
+        kubectl apply -f k8s-ns.yaml
       shell: bash

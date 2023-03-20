@@ -1,27 +1,27 @@
 [English](README.md) | [中文](README_zh.md)
 
-# github-actions-toolbox
+# actions-toolbox
 这是一个封装了一些 github actions 通用工具的代码仓库，欢迎大家直接使用.
 包括: 飞书通知、K8s 操作、云上 CI/CD 组件等.
 
 ## 如何使用
 ```
 ## 首先下载工具代码库
-- name: Checkout github-actions-toolbox
+- name: Checkout actions-toolbox
   uses: actions/checkout@v3
   with:
-    repository: VelocityLight/github-actions-toolbox
+    repository: VelocityLight/actions-toolbox
     ref: main
-    path: github-actions-toolbox
+    path: actions-toolbox
 
 ## 使用你所需要的工具
 - name: Use tool
-  uses: ./github-actions-toolbox/${tool_path}
+  uses: ./actions-toolbox/${tool_path}
   with:
     ${parameter_key_1}: ${parameter_value_1}
     ${parameter_key_n}: ${parameter_value_n}
 ```
-你可以参考这个工程的示例: [.github/workflows/user-usage.yml](https://github.com/VelocityLight/github-actions-toolbox/blob/main/.github/workflows/user-usage.yml)
+你可以参考这个工程的示例: [.github/workflows/user-usage.yml](https://github.com/VelocityLight/actions-toolbox/blob/main/.github/workflows/user-usage.yml)
 
 ## 工具列表
 ```
