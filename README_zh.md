@@ -2,7 +2,7 @@
 
 # actions-toolbox
 这是一个封装了一些 github actions 通用工具的代码仓库，欢迎大家直接使用.
-包括: 飞书通知、K8s 操作、云上 CI/CD 组件等.
+包括: 飞书通知、K8s 操作、CI/CD 组件、AWS/GCP 云上工具等等...
 
 ## 如何使用
 ```
@@ -11,7 +11,7 @@
   uses: actions/checkout@v3
   with:
     repository: VelocityLight/actions-toolbox
-    ref: main
+    ref: v1
     path: actions-toolbox
 
 ## 使用你所需要的工具

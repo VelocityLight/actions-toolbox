@@ -2,7 +2,7 @@
 
 # actions-toolbox
 This is a code repository that contains some common tools for GitHub Actions, and everyone is welcome to use it directly.
-Like Feishu notification、K8s operation、cloud CI/CD components etc...
+Like Feishu notification, K8s operation, CI/CD components, AWS/GCP Cloud tools etc...
 
 ## How to use
 ```
@@ -11,7 +11,7 @@ Like Feishu notification、K8s operation、cloud CI/CD components etc...
   uses: actions/checkout@v3
   with:
     repository: VelocityLight/actions-toolbox
-    ref: main
+    ref: v1
     path: actions-toolbox
 
 ## Use tool that you need
