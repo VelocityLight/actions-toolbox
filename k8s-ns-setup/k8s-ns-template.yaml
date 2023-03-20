@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   name: $TARGET_NAMESPACE
   labels:
-    creator: github-actions
+    creator: actions

@@ -13,22 +13,22 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      ## Download github-actions-toolbox first
-      - name: Checkout github-actions-toolbox
+      ## Download actions-toolbox first
+      - name: Checkout actions-toolbox
         uses: actions/checkout@v3
         with:
-          repository: VelocityLight/github-actions-toolbox
+          repository: VelocityLight/actions-toolbox
           ref: main
-          path: github-actions-toolbox
+          path: actions-toolbox
 
       - name: Show file
         run: |
           ls -la
-          cd github-actions-toolbox
+          cd actions-toolbox
           ls -la
 
       ## Use tool that you need
       - name: Use tool
-        uses: ./github-actions-toolbox/test-user-usage
+        uses: ./actions-toolbox/test-user-usage
         with:
           name: ${{ github.event.pull_request.user.login }}

@@ -1,27 +1,27 @@
 [English](README.md) | [中文](README_zh.md)
 
-# github-actions-toolbox
+# actions-toolbox
 This is a code repository that contains some common tools for GitHub Actions, and everyone is welcome to use it directly.
 Like Feishu notification、K8s operation、cloud CI/CD components etc...
 
 ## How to use
 ```
-## Download github-actions-toolbox first
-- name: Checkout github-actions-toolbox
+## Download actions-toolbox first
+- name: Checkout actions-toolbox
   uses: actions/checkout@v3
   with:
-    repository: VelocityLight/github-actions-toolbox
+    repository: VelocityLight/actions-toolbox
     ref: main
-    path: github-actions-toolbox
+    path: actions-toolbox
 
 ## Use tool that you need
 - name: Use tool
-  uses: ./github-actions-toolbox/${tool_path}
+  uses: ./actions-toolbox/${tool_path}
   with:
     ${parameter_key_1}: ${parameter_value_1}
     ${parameter_key_n}: ${parameter_value_n}
 ```
-You could see example in this project: [.github/workflows/user-usage.yml](https://github.com/VelocityLight/github-actions-toolbox/blob/main/.github/workflows/user-usage.yml)
+You could see example in this project: [.github/workflows/user-usage.yml](https://github.com/VelocityLight/actions-toolbox/blob/main/.github/workflows/user-usage.yml)
 
 ## Tools
 ```
